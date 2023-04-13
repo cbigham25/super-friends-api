@@ -15,3 +15,7 @@ function logJSONData() {
 
 logJSONData();
 
+const generateButton = document.getElementById('clickButton');
+generateButton.addEventListener('click', function() {
+    console.log('Thanks For Clicking!');
+});
