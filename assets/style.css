@@ -50,3 +50,15 @@ display: inline;
 background:green;
 
 }
+
+.clearBtn:hover {
+    background-color: blueviolet;
+}
+
+.saveBtn:hover {
+    background-color: blueviolet;
+}
+
+button:hover {
+    background-color: blueviolet;
+}
