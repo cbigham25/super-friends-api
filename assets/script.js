@@ -55,7 +55,6 @@ clearBtnEl.addEventListener('click', clearHTML);
 
 saveBtnEl.addEventListener('click', saveData);
 
-/*const generateButton = document.getElementById('clickButton');
 generateButton.addEventListener('click', function() {
 
 let nameFakeurl = "https://chriscastle.com/proxy/index.php?:proxy:https://api.namefake.com/";
@@ -76,12 +75,8 @@ function fetchFakeName() {
 
 fetchFakeName().then((name) => {
     bioEl.textContent = "Real Name: " + name;
-}).catch((error) => {
+}).catch((error) => {   
     console.error(error);
 });
 
-const generateButton = document.getElementById('clickButton');
-generateButton.addEventListener('click', function () {
-
-    console.log('Thanks For Clicking!');
-});*/
+});
