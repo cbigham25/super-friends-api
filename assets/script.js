@@ -1,4 +1,3 @@
-const url = "https://chriscastle.com/proxy/index.php?:proxy:https://superheroapi.com/api/202045435900603/70";
 const names = ['Superman', 'Goku', 'Silver Surfer', 'Green Arrow', 'Black Canary', 'The Hulk', 'Spiderman', 'Wonder Woman'];
 const stats = ['Ultra Strength', 'Cat powers', 'super speed', 'fire powers', 'teleportation', 'time warping', 'material manipulation'];
 
@@ -9,8 +8,11 @@ const generateButton = document.getElementById('clickButton');
 const clearBtnEl = document.querySelector('.clearBtn');
 const saveBtnEl = document.querySelector('.saveBtn');
 
+let superHeroUrl = "https://chriscastle.com/proxy/index.php?:proxy:https://superheroapi.com/api/202045435900603/70";
+
+
 function logJSONData() {
-  fetch(url, {}).then((response) => {
+  fetch(superHeroUrl, {}).then((response) => {
     return response.json();
   }).then((data) => {
     console.log(data);
@@ -55,5 +57,31 @@ saveBtnEl.addEventListener('click', saveData);
 
 /*const generateButton = document.getElementById('clickButton');
 generateButton.addEventListener('click', function() {
+
+let nameFakeurl = "https://chriscastle.com/proxy/index.php?:proxy:https://api.namefake.com/";
+
+function fetchFakeName() {
+    return new Promise((resolve, reject) => {
+        fetch(nameFakeurl, {}).then((response) => {
+            return response.json();
+        }).then((data) => {
+            const name = data.name;
+            resolve(name); // Resolve the Promise with the name
+        }).catch((error) => {
+            reject(error); // Reject the Promise with the error
+        });
+    });
+}
+
+
+fetchFakeName().then((name) => {
+    bioEl.textContent = "Real Name: " + name;
+}).catch((error) => {
+    console.error(error);
+});
+
+const generateButton = document.getElementById('clickButton');
+generateButton.addEventListener('click', function () {
+
     console.log('Thanks For Clicking!');
 });*/
