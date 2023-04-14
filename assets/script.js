@@ -1,5 +1,5 @@
 
-var heroName = document.querySelector('#name');
+var bioEl = document.querySelector('#bio');
 var url = "https://chriscastle.com/proxy/index.php?:proxy:https://superheroapi.com/api/202045435900603/70";
 
 function logJSONData() {
@@ -32,8 +32,7 @@ function fetchFakeName() {
 
 
 fetchFakeName().then((name) => {
-    //TODO change this to be what ever we come up with for UI. 
-    heroName.textContent = name;
+    bioEl.textContent = "Real Name: " + name;
 }).catch((error) => {
     console.error(error);
 });
