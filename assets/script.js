@@ -1,9 +1,10 @@
 //const names = ;
-const stats = ['Ultra Strength', 'Cat powers', 'super speed', 'fire powers', 'teleportation', 'time warping', 'material manipulation'];
+const stats = ['Ultra Strength', 'Cat powers', 'super speed', 'fire powers', 'teleportation', 'time warping', 'material manipulation', 'heat vision', 'super hearing', 'mind control', 'omnipotence', 'molecular combustion', 'God slap', 'metal claws', 'shapeshifting', 'Ultra New Jersey Accent', 'transmutation', 'dreamwalker', 'beastmaster', 'shadow weaver', 'blood weaver', 'Eternal mage', 'eye lasers', 'demi-god', 'sharingan'];
 
 const nameEl = document.getElementById('names');
 const statsEl = document.getElementById('stats');
 const bioEl = document.getElementById('bio');
+const identityEl = document.getElementById('identity')
 const generateButton = document.getElementById('clickButton');
 const clearBtnEl = document.querySelector('.clearBtn');
 const saveBtnEl = document.querySelector('.saveBtn');
@@ -15,7 +16,7 @@ function logJSONData() {
     fetch(superHeroUrl, {}).then((response) => {
         return response.json();
     }).then((data) => {
-        console.log(data);
+        console.log(data);    
     });
 }
 
@@ -42,12 +43,13 @@ function generateRandomSuperhero() {
         const power = stats[Math.floor(Math.random() * stats.length)];
         const stat = Math.floor(Math.random() * 100) + 1;
         const bio = `You are now named ${name}. You are a hero with ${power} abilities. Where will you use them first?`;
-
+        
         const newData = {
             heroName: name,
             power: power,
             stat: stat,
-            bio: bio
+            bio: bio,
+           
         }
 
         updateHTML(newData);
@@ -61,8 +63,9 @@ function generateRandomSuperhero() {
 
 function updateHTML(data) {
     nameEl.textContent = data.heroName;
-    statsEl.textContent = `${data.power}: ${data.stat}%`;
+    statsEl.textContent = `${data.power}`;
     bioEl.textContent = data.bio;
+    identityEl.textContent = data.fakeName;
 }
 
 function clearHTML() {
@@ -84,31 +87,31 @@ clearBtnEl.addEventListener('click', clearHTML);
 
 saveBtnEl.addEventListener('click', saveData);
 
-// generateButton.addEventListener('click', function () {
+generateButton.addEventListener('click', function () {
 
-//     let nameFakeurl = "https://chriscastle.com/proxy/index.php?:proxy:https://api.namefake.com/";
+     let nameFakeurl = "https://chriscastle.com/proxy/index.php?:proxy:https://api.namefake.com/";
 
-//     function fetchFakeName() {
-//         return new Promise((resolve, reject) => {
-//             fetch(nameFakeurl, {}).then((response) => {
-//                 return response.json();
-//             }).then((data) => {
-//                 const name = data.name;
-//                 resolve(name); // Resolve the Promise with the name
-//             }).catch((error) => {
-//                 reject(error); // Reject the Promise with the error
-//             });
-//         });
-//     }
+     function fetchFakeName() {
+         return new Promise((resolve, reject) => {
+             fetch(nameFakeurl, {}).then((response) => {
+                return response.json();
+             }).then((data) => {
+                 const name = data.name;
+                 resolve(name); // Resolve the Promise with the name
+             }).catch((error) => {
+                reject(error); // Reject the Promise with the error
+             });
+         });
+     }
 
 
-//     fetchFakeName().then((name) => {
-//         bioEl.textContent = "Real Name: " + name;
-//     }).catch((error) => {
-//         console.error(error);
-//     });
+     fetchFakeName().then((name) => {
+         identityEl.textContent = "Real Name: " + name;
+     }).catch((error) => {
+         console.error(error);
+     });
 
-// });
+ });
 
 
 //731
