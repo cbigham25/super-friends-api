@@ -23,6 +23,30 @@ logJSONData();
 
 function generateRandomSuperhero() {
 
+    let nameFakeurl = "https://chriscastle.com/proxy/index.php?:proxy:https://api.namefake.com/";
+
+    function fetchFakeName() {
+        return new Promise((resolve, reject) => {
+            fetch(nameFakeurl, {}).then((response) => {
+                return response.json();
+            }).then((data) => {
+                const name = data.name;
+                resolve(name); // Resolve the Promise with the name
+            }).catch((error) => {
+                reject(error); // Reject the Promise with the error
+            });
+        });
+    }
+
+
+    fetchFakeName().then((name) => {
+        //TODO change this to update the correct HTML
+        bioEl.textContent = name;
+    }).catch((error) => {
+        console.error(error);
+    });
+
+
     let url = `https://chriscastle.com/proxy/index.php?:proxy:https://superheroapi.com/api/202045435900603/search/%20`;
 
     fetch(url, {}).then((response) => {
@@ -34,13 +58,22 @@ function generateRandomSuperhero() {
         console.log(data);
         let random1 = Math.floor(Math.random() * data.results.length) + 1;
         let random2 = Math.floor(Math.random() * data.results.length) + 1;
+        let random3 = Math.floor(Math.random() * data.results.length) + 1;
+        let random4 = Math.floor(Math.random() * data.results.length) + 1;
+        let random5 = Math.floor(Math.random() * data.results.length) + 1;
+        let random6 = Math.floor(Math.random() * data.results.length) + 1;
+        let random7 = Math.floor(Math.random() * data.results.length) + 1;
+        let random8 = Math.floor(Math.random() * data.results.length) + 1;
+
         let firstName = data.results[random1].name.split(" ")[0];
         let lastName = data.results[random2].name.split(" ")[1];
+        let heroStats = data.results[random3].powerstats;
 
         const name = firstName + " " + lastName;
         console.log(name);
         const power = stats[Math.floor(Math.random() * stats.length)];
-        const stat = Math.floor(Math.random() * 100) + 1;
+        const stat = `Combat: ${heroStats.combat} Intelligence: ${heroStats.intelligence} Strength: ${heroStats.strength} Speed: ${heroStats.speed} Durability: ${heroStats.durability} Power: ${heroStats.power}`;
+        console.log(typeof heroStats.combat);
         const bio = `You are now named ${name}. You are a hero with ${power} abilities. Where will you use them first?`;
 
         const newData = {
@@ -61,7 +94,7 @@ function generateRandomSuperhero() {
 
 function updateHTML(data) {
     nameEl.textContent = data.heroName;
-    statsEl.textContent = `${data.power}: ${data.stat}%`;
+    statsEl.textContent = data.stat;
     bioEl.textContent = data.bio;
 }
 
@@ -84,31 +117,10 @@ clearBtnEl.addEventListener('click', clearHTML);
 
 saveBtnEl.addEventListener('click', saveData);
 
-// generateButton.addEventListener('click', function () {
-
-//     let nameFakeurl = "https://chriscastle.com/proxy/index.php?:proxy:https://api.namefake.com/";
-
-//     function fetchFakeName() {
-//         return new Promise((resolve, reject) => {
-//             fetch(nameFakeurl, {}).then((response) => {
-//                 return response.json();
-//             }).then((data) => {
-//                 const name = data.name;
-//                 resolve(name); // Resolve the Promise with the name
-//             }).catch((error) => {
-//                 reject(error); // Reject the Promise with the error
-//             });
-//         });
-//     }
+generateButton.addEventListener('click', function () {
 
 
-//     fetchFakeName().then((name) => {
-//         bioEl.textContent = "Real Name: " + name;
-//     }).catch((error) => {
-//         console.error(error);
-//     });
-
-// });
+});
 
 
 //731
