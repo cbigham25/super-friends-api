@@ -1,64 +1,105 @@
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
 
-*{
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
     font-family: 'DynaPuff', cursive;
-    background: linear-gradient( rgb(247, 192, 148),rgb(206, 99, 99));
+    background-color: #381010;
+  }
+  
+  h1, h2, p {
+    margin-bottom: 1rem;
+  }
+  
+  .makeHero {
+    background-color: #b9a535;
+    padding: 2rem;
     text-align: center;
-
-}
-
-
-h1 {
-
-    font-size: 70px;
-    color:rgb(12, 12, 85);
+  }
+  
+  .makeHero h1 {
+    font-size: 3rem;
+    color:  #3b6183;
     text-shadow: 2px 2px 4px black;
-
-}
-
-
-h2 {
-    color: rgb(60, 40, 78);
-    font-size: 20px;
-
-}
-
-p {
-    color: rgb(139, 13, 13);
-    font-size: 30px;
-}
-
-button {
+    font-weight: bold;
+  }
+  
+  .makeHero h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color:  #381010;
+  }
+  
+  .makeHero p {
+    font-size: 1.2rem;
+    color:  #381010;
+  }
+  
+  #clickButton {
     display: inline-block;
-    border-radius: 20px;
-    color: white;
-    background:rgb(60, 40, 78);
-    font-size: 18px;
-
-
-}
-
-
-.clearBtn {
-display: inline;
-background:red;
-
-}
-
-.saveBtn {
-display: inline;
-background:green;
-
-}
-
-.clearBtn:hover {
-    background-color: blueviolet;
-}
-
-.saveBtn:hover {
-    background-color: blueviolet;
-}
-
-button:hover {
-    background-color: blueviolet;
-}
+    background-color:  #28a745;
+    color: #fff;
+    box-shadow: 2px 2px 4px black;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  #clickButton:hover {
+    background-color: #218838;
+  }
+  
+  
+  .outcome {
+    background-color: #3b6183;
+    margin-top: 2rem;
+    padding: 2rem;
+  }
+  
+  .outcome h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color:  #b9a535;
+    margin-bottom: 1.5rem;
+  }
+  
+  .outcome p {
+    font-size: 1.2rem;
+    color: #b9a535;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  
+  
+  div:last-child {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .clearBtn, .saveBtn {
+    display: inline-block;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin-right: 1rem;
+  }
+  
+  .clearBtn:hover, .saveBtn:hover {
+    background-color: #218838;
+  }
