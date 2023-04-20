@@ -1,8 +1,9 @@
 //const names = ;
-const stats = ['Ultra Strength', 'Cat powers', 'super speed', 'fire powers', 'teleportation', 'time warping', 'material manipulation', 'heat vision', 'super hearing', 'mind control', 'omnipotence', 'molecular combustion', 'God slap', 'metal claws', 'shapeshifting', 'Ultra New Jersey Accent', 'transmutation', 'dreamwalker', 'beastmaster', 'shadow weaver', 'blood weaver', 'Eternal mage', 'eye lasers', 'demi-god', 'sharingan'];
+const powers = ['Ultra Strength', 'Cat powers', 'super speed', 'fire powers', 'teleportation', 'time warping', 'material manipulation', 'heat vision', 'super hearing', 'mind control', 'omnipotence', 'molecular combustion', 'God slap', 'metal claws', 'shapeshifting', 'Ultra New Jersey Accent', 'transmutation', 'dreamwalker', 'beastmaster', 'shadow weaver', 'blood weaver', 'Eternal mage', 'eye lasers', 'demi-god', 'sharingan'];
 
-const nameEl = document.getElementById('names');
 const statsEl = document.getElementById('stats');
+const nameEl = document.getElementById('names');
+const powerEl = document.getElementById('powers');
 const bioEl = document.getElementById('bio');
 const identityEl = document.getElementById('identity')
 const generateButton = document.getElementById('clickButton');
@@ -58,7 +59,7 @@ function generateRandomSuperhero() {
 
         const name = firstName + " " + lastName;
         console.log(name);
-        const power = stats[Math.floor(Math.random() * stats.length)];
+        const power = powers[Math.floor(Math.random() * powers.length)];
         const stat = `Combat: ${heroStats.combat} Intelligence: ${heroStats.intelligence} Strength: ${heroStats.strength} Speed: ${heroStats.speed} Durability: ${heroStats.durability} Power: ${heroStats.power}`;
         console.log(typeof heroStats.combat);
         const bio = `You are now named ${name}. You are a hero with ${power} abilities. Where will you use them first?`;
@@ -82,14 +83,15 @@ function generateRandomSuperhero() {
 
 function updateHTML(data) {
     nameEl.textContent = data.heroName;
-    statsEl.textContent = `${data.power}`
+    powerEl.textContent = data.power
+    statsEl.textContent = data.stat;
     bioEl.textContent = data.bio;
     identityEl.textContent = data.fakeName;
 }
 
 function clearHTML() {
     nameEl.textContent = '';
-    statsEl.textContent = '';
+    powerEl.textContent = '';
     bioEl.textContent = '';
 }
 
@@ -125,7 +127,7 @@ generateButton.addEventListener('click', function () {
 
 
     fetchFakeName().then((name) => {
-        identityEl.textContent = "Real Name: " + name;
+        identityEl.textContent = name;
     }).catch((error) => {
         console.error(error);
     });
